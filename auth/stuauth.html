@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>学生认证</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+    <style>
+        .col-6 {
+            height: 100vh;
+        }
+        .center-vertical {
+            transform: translateY(-50%);
+            position: absolute;
+            top: 50%;
+        }
+        body {
+            height: 100vh;
+        }
+        .container {
+            height: 100%;
+        }
+        .row {
+            height: 100%;
+        }
+    </style>
+
+    
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script src="js/url.js"></script>
+<script src="js/md5.js"></script>
+<script src="js/uauth.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <h3 class="center-vertical" style="width: 100%; text-align: center"><a href="index.html">StuAuth</a>学生认证</h3>
+            </div>
+            <div class="col-2">
+                <div style="height: 50%; width: 1px; background-color: grey;" class="center-vertical">
+
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="center-vertical" style="width: 100%">
+                        <div>
+                            <div class="form-group">
+                                <h3>入学信息</h3>
+                                <select name="school" class="custom-select" onchange="onSchoolTypeChanged(this)">
+                                    <option selected>选择在校类型</option>
+                                    <option value="middle_school">高中</option>
+                                    <option value="campus">大学</option>
+                                    <option value="tech_school">职业学校</option>
+                                </select>
+                                <select name="attend_time" class="custom-select" id="attend_time" onchange="onAttendTimeChanged(this)">
+                                    <option selected>选择入学时间</option>
+                                </select>
+                                <select name="last_time" class="custom-select" id="last_time">
+                                    <option selected>选择毕业时间</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <h3>院校信息</h3>
+
+                                <select name="campus_name" class="custom-select" id="campus_name">
+                                        <option selected>选择院校</option>
+                                    </select>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="submitForAuth()">提交认证</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        for (var i = 2019; i >= 2010; i--) {
+            var child = document.createElement('option')
+            child.value='time_'+i
+            child.innerHTML=i
+            document.getElementById('attend_time').appendChild(child)
+        }
+
+        function onSchoolTypeChanged(data) {
+            if (data.selectedIndex == 0) {
+                // 高中
+            } else if (data.selectedIndex == 1) {
+                // 大学
+            } else {
+                // 职校
+            }
+        }
+
+        function onAttendTimeChanged(data) {
+            var startTime = parseInt(data[data.selectedIndex].innerHTML)
+            document.getElementById('last_time').innerHTML="<option selected>选择毕业时间</option>"
+            for (var i = startTime + 1; i <= startTime + 11; i++) {
+                var child = document.createElement('option')
+                child.value='lasttime_'+i
+                child.innerHTML=i
+                document.getElementById('last_time').appendChild(child)
+            }
+        }
+
+        function submitForAuth() {
+
+        }
+    </script>
+</body>
+</html>
