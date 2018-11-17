@@ -16,6 +16,24 @@
             <div class="col-8">
                 <div class="section-card">
                     <h3>学生认证</h3>
+                    
+                    <div style="margin: 20px"></div>
+                    <div class="row list-cell">
+                        <div class="col-4"><strong>审核状态</strong></div>
+                        <div class="col-8" id="my_campus_status" style="color: red">正在审核</div>
+                    </div>
+                    <div class="row list-cell">
+                        <div class="col-4"><strong>院校类别</strong></div>
+                        <div class="col-8" id="my_campus"></div>
+                    </div>
+                    <div class="row list-cell">
+                        <div class="col-4"><strong>在校时间</strong></div>
+                        <div class="col-8" id="my_campus_time"></div>
+                    </div>
+                    <div class="row list-cell">
+                        <div class="col-4"><strong>院校名称</strong></div>
+                        <div class="col-8" id="my_campus_name"></div>
+                    </div>
                 </div>
                 <div class="section-card">
                     <h3>我的权益</h3>
@@ -45,7 +63,7 @@
                     </div>
                     <div class="row list-cell">
                         <div class="col-4"><strong>学生认证</strong></div>
-                        <div class="col-8"><a href="auth/stuauth.html" id="my_stu_verification">查看</a></div>
+                        <div class="col-8"><a href="auth/stuauth.html" id="my_stu_verification">前往修改</a></div>
                     </div>
                     <div class="row list-cell">
                         <button type="button" class="btn btn-danger btn-block" onclick="logout()">注销</button>

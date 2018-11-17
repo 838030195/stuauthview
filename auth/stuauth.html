@@ -37,15 +37,15 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 
-<script src="js/url.js"></script>
-<script src="js/md5.js"></script>
-<script src="js/uauth.js"></script>
+<script src="../js/url.js"></script>
+<script src="../js/md5.js"></script>
+<script src="../js/uauth.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-5">
-                <h3 class="center-vertical" style="width: 100%; text-align: center"><a href="index.html">StuAuth</a>学生认证</h3>
+                <h3 class="center-vertical" style="width: 100%; text-align: center"><a href="../index.html">StuAuth</a>学生认证</h3>
             </div>
             <div class="col-2">
                 <div style="height: 50%; width: 1px; background-color: grey;" class="center-vertical">
@@ -57,7 +57,7 @@
                         <div>
                             <div class="form-group">
                                 <h3>入学信息</h3>
-                                <select name="school" class="custom-select" onchange="onSchoolTypeChanged(this)">
+                                <select name="school" class="custom-select" onchange="onSchoolTypeChanged(this)" id="school">
                                     <option selected>选择在校类型</option>
                                     <option value="middle_school">高中</option>
                                     <option value="campus">大学</option>
@@ -94,12 +94,58 @@
         }
 
         function onSchoolTypeChanged(data) {
-            if (data.selectedIndex == 0) {
+            document.getElementById('campus_name').innerHTML="<option selected>选择院校</option>"
+        
+            if (data.selectedIndex == 1) {
                 // 高中
-            } else if (data.selectedIndex == 1) {
+                $.ajax({
+                    url: ipmain + ":8387/school/highSchool",
+                    success(data) {
+                        var arr = data.split("-")
+                        for (var i = 0, length = arr.length; i < length; i++) {
+                            if (arr[i] != "") {
+                                var child = document.createElement('option')
+                                child.value='highschool_'+arr[i]
+                                child.innerHTML=arr[i]
+                                document.getElementById('campus_name').appendChild(child)
+                            }
+                        }
+                    }
+                })
+            } else if (data.selectedIndex == 2) {
                 // 大学
+                $.ajax({
+                    url: ipmain + ":8387/school/college",
+                    success(data) {
+                        var arr = data.split("-")
+                        for (var i = 0, length = arr.length; i < length; i++) {
+                            if (arr[i] != "") {
+                                var child = document.createElement('option')
+                                child.value='highschool_'+arr[i]
+                                child.innerHTML=arr[i]
+                                document.getElementById('campus_name').appendChild(child)
+                            }
+                        }
+                    }
+
+                })
             } else {
                 // 职校
+                $.ajax({
+                    url: ipmain + ":8387/school/otherSchool",
+                    success(data) {
+                        var arr = data.split("-")
+                        for (var i = 0, length = arr.length; i < length; i++) {
+                            if (arr[i] != "") {
+                                var child = document.createElement('option')
+                                child.value='highschool_'+arr[i]
+                                child.innerHTML=arr[i]
+                                document.getElementById('campus_name').appendChild(child)
+                            }
+                        }
+                    }
+
+                })
             }
         }
 
@@ -115,7 +161,30 @@
         }
 
         function submitForAuth() {
+            var diploma = document.getElementById('school')[document.getElementById('school').selectedIndex].innerHTML
+            var attendTime = document.getElementById('attend_time')[document.getElementById('attend_time').selectedIndex].innerHTML
+            var lastTime = document.getElementById('last_time')[document.getElementById('last_time').selectedIndex].innerHTML
+            var school = document.getElementById('campus_name')[document.getElementById('campus_name').selectedIndex].innerHTML
 
+            $.ajax({
+                url: ipmain + ':8387/user/update',
+                data: {
+                    'id': localStorage.getItem('uid'),
+                    'diploma': diploma,
+                    'attendTime': attendTime,
+                    'leaveTime': lastTime,
+                    'school': school
+                },
+                dataType: "JSON",
+                type: "POST",
+                success(data) {
+                    alert('修改成功')
+                    window.location.href='../index.html'
+                },
+                error(data) {
+                    alert('服务器错误')
+                }
+            })
         }
     </script>
 </body>

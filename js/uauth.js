@@ -25,6 +25,10 @@ function performLogin(phone, pwd) {
                 localStorage.setItem('pwd', pwd)
                 localStorage.setItem('name', temp.obj.name)
                 localStorage.setItem('identity', temp.obj.identity)
+                localStorage.setItem('uid', temp.obj.id)
+                localStorage.setItem('diploma', temp.obj.diploma)
+                localStorage.setItem('authenticated', temp.obj.authenticated)
+                localStorage.setItem('school', temp.obj.school)
                 window.location.href='index.html'
             } else {
                 alert('用户名或密码错误')
