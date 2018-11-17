@@ -106,3 +106,10 @@ body {
 .circle-image {
     border-radius: 50%;
 }
+
+.img{
+    height: 35%;
+    width: auto;
+}
+
+.navbar-default .navbar-nav{ text-align: center; float: none; } .navbar-default .navbar-nav li{ display: inline-block; float: none; }
