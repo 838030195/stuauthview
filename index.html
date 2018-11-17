@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>StuAuth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css.map" />
+    <script src="js/uauth.js"></script>
+</head>
+<body onload="checkLogin()" style="padding-top: 30px">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div class="section-card">
+                    <h3>学生认证</h3>
+                </div>
+                <div class="section-card">
+                    <h3>我的权益</h3>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="section-card">
+                    <h3>我的信息</h3>
+                    
+                    <div style="margin: 20px"></div>
+                    <div class="row list-cell" style="text-align:center;width: 70px; height: 70px;">
+                        <img src="image/default_avatar.jpg" class="circle-image center-hori" style="width: 70px; height: 70px; display: block">
+                    </div>
+                    
+                    <div style="margin: 20px"></div>
+                    <div class="row list-cell">
+                        <div class="col-4"><strong>手机号</strong></div>
+                        <div class="col-8" id="my_phone"></div>
+                    </div>
+                    <div class="row list-cell">
+                        <div class="col-4"><strong>姓名</strong></div>
+                        <div class="col-8" id="my_name"></div>
+                    </div>
+                    <div class="row list-cell">
+                        <div class="col-4"><strong>身份证号</strong></div>
+                        <div class="col-8" id="my_id_code"></div>
+                    </div>
+                    <div class="row list-cell">
+                        <div class="col-4"><strong>学生认证</strong></div>
+                        <div class="col-8"><a href="#" id="my_stu_verification">查看</a></div>
+                    </div>
+                    <div class="row list-cell">
+                        <button type="button" class="btn btn-danger btn-block" onclick="logout()">注销</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+</body>
+</html>

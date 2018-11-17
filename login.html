@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+    <style>
+        .col-6 {
+            height: 100vh;
+        }
+        .center-vertical {
+            transform: translateY(-50%);
+            position: absolute;
+            top: 50%;
+        }
+        body {
+            height: 100vh;
+        }
+        .container {
+            height: 100%;
+        }
+        .row {
+            height: 100%;
+        }
+    </style>
+
+    
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script src="js/url.js"></script>
+<script src="js/md5.js"></script>
+<script src="js/uauth.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <h3 class="center-vertical" style="width: 100%; text-align: center">登录到<a href="index.html">StuAuth</a></h3>
+            </div>
+            <div class="col-2">
+                <div style="height: 50%; width: 1px; background-color: grey;" class="center-vertical">
+
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="center-vertical" style="width: 100%">
+                        <div>
+                            <div class="form-group">
+                                <label for="phone">手机号码：</label>
+                                <input type="text" class="form-control" id="phone" placeholder="请输入手机号码" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">登录密码：</label>
+                                <input type="password" class="form-control" id="pwd" placeholder="请输入密码" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" onclick="performLogin(document.getElementById('phone').value, hex_md5(document.getElementById('pwd').value))">登录</button>
+                            <button type="button" class="btn btn-default" onclick="window.location.href='register.html'">注册</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
