@@ -40,6 +40,33 @@
 <script src="../js/url.js"></script>
 <script src="../js/md5.js"></script>
 <script src="../js/uauth.js"></script>
+
+<script>
+    function checkAuthentication() {
+        var phone = localStorage.getItem('phone')
+        var pwd = localStorage.getItem('pwd')
+        if (phone != "" && pwd != "") {
+            $.ajax({
+                url: ipmain+":8387/user/signIn",
+                dataType: "json",
+                type: "POST",
+                data: {'phone': phone, 'pwd': pwd},
+                success: function(data) {
+                    var temp = eval(data);
+                    if (temp.status == 'success' && temp.obj.authenticated != 0) {
+                        window.location.href='authsuccess.html'
+                    }
+                },
+                error: function() {
+                }
+             })
+        
+        } else {
+            alert('请先登录')
+            window.location.href='../login.html'
+        }
+    }
+</script>
 </head>
 <body>
     <div class="container">

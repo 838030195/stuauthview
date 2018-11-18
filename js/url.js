@@ -1,1 +1,1 @@
-var ipmain='http://192.168.41.6'
+var ipmain='http://202.194.15.144'
